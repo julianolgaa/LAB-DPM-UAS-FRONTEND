@@ -20,6 +20,7 @@ import axios from 'axios';
 import API_URL from '@/config/config';
 import Constants from "expo-constants/src/Constants";
 
+
 const TodosScreen = () => {
     const {todos, fetchTodos} = useTodos();
     const [title, setTitle] = useState('');
@@ -85,7 +86,7 @@ const TodosScreen = () => {
                         renderItem={({item}) => (
                             <Card style={styles.card} elevation={3} onPress={() => router.push(`../todo/${item._id}`)}>
                                 <Card.Content>
-                                    <Text variant="titleMedium">{item.title}</Text>
+                                    <Text variant="titleMedium" style={styles.cardTitle}>{item.title}</Text>
                                     <Text variant="bodyMedium" style={styles.description}>{item.description}</Text>
                                 </Card.Content>
                                 <Card.Actions>
@@ -130,41 +131,71 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: Constants.statusBarHeight,
+        backgroundColor: '#f5f5f5',
     },
     title: {
         marginTop: 16,
         marginHorizontal: 16,
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#333',
     },
     listContainer: {
         padding: 16,
     },
     card: {
         marginBottom: 16,
-        borderRadius: 8,
+        borderRadius: 12,
+        backgroundColor: '#ffffff',
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
+    },
+    cardTitle: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#2c3e50',
     },
     description: {
         marginTop: 8,
-        color: 'gray',
+        color: '#7f8c8d',
     },
     fab: {
         position: 'absolute',
         right: 16,
         bottom: 16,
+        backgroundColor: '#3498db',
     },
     inputContainer: {
         padding: 16,
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
+        backgroundColor: '#ffffff',
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: -2},
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
         elevation: 5,
     },
     input: {
         marginBottom: 12,
+        backgroundColor: '#ecf0f1',
+        borderRadius: 8,
+    },
+    TextInput: {
+        color: 'black',
     },
     addButton: {
         marginTop: 12,
+        backgroundColor: '#27ae60',
+        paddingVertical: 8,
     },
     cancelButton: {
         marginTop: 8,
+        backgroundColor: '#e74c3c',
+        paddingVertical: 8,
     },
     loading: {
         flex: 1,
